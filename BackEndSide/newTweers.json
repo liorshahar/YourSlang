@@ -1,0 +1,41 @@
+[
+    {
+        "tvShow": "text",
+        "sentences": [
+            {
+                "sentence" : "text",
+                "tweets": [
+                    {
+                        "text": "text",
+                        "created_at": "date"
+                    },
+                    {
+                        "text": "text",
+                        "created_at": "date"
+                    },
+                    {
+                        "text": "text",
+                        "created_at": "date"
+                    }
+                ]
+            },
+            {
+                "sentence" : "text",
+                "tweets": [
+                    {
+                        "text": "text",
+                        "created_at": "date"
+                    },
+                    {
+                        "text": "text",
+                        "created_at": "date"
+                    },
+                    {
+                        "text": "text",
+                        "created_at": "date"
+                    }
+                ]
+            }
+        ]
+    }
+]
