@@ -2,26 +2,36 @@ const express = require("express");
 const router = express.Router();
 const _ = require("underscore");
 const getTvShow = require("../mongooseDB/Controller/getTvShow");
-const getTvShowByName = require("../mongooseDB/Controller/getTvShowByName");
+const getTvShowById = require("../mongooseDB/Controller/getTvShowById");
 
 router.get("/", function(req, res) {
-  getTvShow().then((err, result) => {
+  getTvShow().then((result, err) => {
     if (err) {
       res.send(err);
     } else {
-      res.send(data);
+      res.send(result);
     }
   });
 });
 
 router.get("/:query", function(req, res) {
-  let query = encodeURIComponent(req.params.query);
-  console.log(query);
-  getTvShowByName(query).then((err, result) => {
+  getTvShowById(req.params.query).then((result, err) => {
+    console.log(req.params.query);
     if (err) {
       res.send(err);
     } else {
-      res.send(data);
+      let dataObject = {
+        tvshowname: result.tvshowname,
+        sentencesArray: []
+      };
+
+      result.sentences.forEach(item => {
+        dataObject.sentencesArray.push({
+          text: item.text,
+          tweetCount: item.tweets.length
+        });
+      });
+      res.send(dataObject);
     }
   });
 });
