@@ -12,6 +12,7 @@ module.exports = () => {
     {
       $group: {
         _id: "$tvshowname",
+        showid: { $first: "$_id" },
         sentences: { $sum: 1 },
         tweets: { $sum: { $size: "$sentences.tweets" } }
       }
